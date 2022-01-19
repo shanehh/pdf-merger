@@ -4,7 +4,7 @@ from title_page import create_pdf_title_page
 from PyPDF2 import PdfFileWriter, PdfFileReader
 
 
-def read_pdfs(pdfs_dir: Path):
+def list_pdfs(pdfs_dir: Path):
     lectures_path = list(pdfs_dir.glob("*.pdf"))
     lectures_path.sort()
     return lectures_path
@@ -29,7 +29,7 @@ def main(folder_path: Path):
     page_count = -1
     writer = PdfFileWriter()
 
-    for path in read_pdfs(folder_path):
+    for path in list_pdfs(folder_path):
         title = path.stem.replace("-", " ").title()
         print("Read:", path, title)
         # add title page
